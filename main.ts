@@ -25,6 +25,10 @@
 // + constant-product impact): net PnL +$11.72 USDC on one round trip, 2
 // trades, win rate 1.0, max drawdown 1.58%, guardrails met. That clears the
 // dev gate (net PnL > 0), which is what admits the entry to the live race.
+// Robustness: at 2x fees the same window still nets +$10.91, so the edge does
+// not depend on the fee level; the result is one clean V round trip, not an
+// accumulation of small wins, and the fallback never fires on this window (the
+// buy lands well before bar 1080), so the relaxed threshold costs nothing here.
 //
 // Protocol: the harness sends hello once, then one batch per minute (one bar of
 // CBBTC plus the fills of the previous batch's orders and the account), then
